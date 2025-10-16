@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+        .button {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #step-input {
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Counter Value Display -->
+    <h1 id="counter-value">0</h1>
+    
+    <!-- Step Input -->
+    <input type="number" id="step-input" value="1" min="1">
+    
+    <!-- Control Buttons -->
+    <div>
+        <button id="increment-btn" class="button">Increment</button>
+        <button id="decrement-btn" class="button">Decrement</button>
+        <button id="reset-btn" class="button">Reset</button>
+    </div>
+    
+    <!-- jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var counterValue = 0;
+            
+            // Update the display with the current counter value
+            function updateDisplay() {
+                $('#counter-value').text(counterValue);
+            }
+            
+            // Increment button click event
+            $('#increment-btn').click(function() {
+                var step = parseInt($('#step-input').val()) || 1;
+                counterValue += step;
+                updateDisplay();
+            });
+            
+            // Decrement button click event
+            $('#decrement-btn').click(function() {
+                var step = parseInt($('#step-input').val()) || 1;
+                counterValue -= step;
+                updateDisplay();
+            });
+            
+            // Reset button click event
+            $('#reset-btn').click(function() {
+                counterValue = 0;
+                updateDisplay();
+            });
+        });
+    </script>
+</body>
+</html>
